@@ -96,7 +96,7 @@ function createHeart(e) {
     }, 1000);
 }
 
-// УБИРАЕМ обработчик mousemove для сердечек
+// УБРАЛИ обработчик mousemove для сердечек
 // Добавляем обработчик клика на весь body
 document.body.addEventListener('click', createHeart);
 
@@ -206,8 +206,13 @@ function calculateResult() {
     resultContent.innerHTML = message;
     resultDiv.style.display = 'block';
     
-    // ИСПРАВЛЕНИЕ: Прокручиваем к результату с плавной анимацией
-    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Прокручиваем к результату
+    resultDiv.scrollIntoView({ behavior: 'smooth' });
+    
+    // Автоматически прокручиваем вверх через 3 секунды
+    setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 3000);
 }
 
 // Отправка сообщения через сервер
