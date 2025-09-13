@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2 года вместе!</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body onmousemove="createHeart(event)" data-parallax="0">
+    <!-- Интерактивные пузырьки -->
+    <div class="bubble" style="top: 20%; left: 15%;">
+        <div class="bubble-text">Ты мое счастье ❤️</div>
+    </div>
+    <div class="bubble" style="top: 40%; left: 80%;">
+        <div class="bubble-text">Люблю твой смех 🌟</div>
+    </div>
+    <div class="bubble" style="top: 70%; left: 25%;">
+        <div class="bubble-text">Ты совершенна 💖</div>
+    </div>
+    <div class="bubble" style="top: 30%; left: 70%;">
+        <div class="bubble-text">С тобой рай 🌈</div>
+    </div>
+    <div class="bubble" style="top: 60%; left: 85%;">
+        <div class="bubble-text">Навсегда твой 💕</div>
+    </div>
+    <div class="bubble" style="top: 80%; left: 40%;">
+        <div class="bubble-text">Ты мое вдохновение ✨</div>
+    </div>
+
+    <!-- Первый слайд -->
+    <div class="slide active" id="slide1">
+        <div class="container">
+            <div class="heart">❤️</div>
+            <h1>С Днем Нашей Любви!</h1>
+            <p>2 года — это не просто цифра. Это 730 дней счастья, улыбок и любви.</p>
+            <p>Спасибо за каждый момент ❤️</p>
+            <button class="next-btn" onclick="showSlide(2)">Продолжить</button>
+        </div>
+    </div>
+
+    <!-- Второй слайд (Таймер) -->
+    <div class="slide" id="slide2">
+        <div class="container">
+            <div class="heart">⏳</div>
+            <h1>Наше Время Вместе</h1>
+            <div class="timer">
+                <div class="timer-numbers">
+                    <div class="time-unit">
+                        <div class="time-value" id="days">000</div>
+                        <div class="time-label">Дней</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="hours">00</div>
+                        <div class="time-label">Часов</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="minutes">00</div>
+                        <div class="time-label">Минут</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="seconds">00</div>
+                        <div class="time-label">Секунд</div>
+                    </div>
+                </div>
+            </div>
+            <p>С 14 сентября, 08:50</p>
+            <p>Каждая секунда с тобой — бесценна 💖</p>
+            <button class="next-btn" onclick="showSlide(3)">Продолжить</button>
+        </div>
+    </div>
+
+    <!-- Третий слайд (Открытка) -->
+    <div class="slide" id="slide3">
+        <div class="container">
+            <div class="heart">💌</div>
+            <h1>Письмо Тебе</h1>
+            <div class="letter">
+                <h2>Моя Любовь,</h2>
+                <div class="letter-content">
+                    <p>Каждый день с тобой — это подарок.</p>
+                    <p>Твоя улыбка освещает даже самые темные дни.</p>
+                    <p>Спасибо за все моменты, что мы разделили.</p>
+                    <p>Я люблю тебя больше, чем слова могут выразить.</p>
+                </div>
+                <div class="signature">Твой(я) навсегда ❤️</div>
+            </div>
+            <button class="next-btn" onclick="showSlide(4)">Продолжить</button>
+        </div>
+    </div>
+
+    <!-- Четвертый слайд (Тест "Язык любви") -->
+    <div class="slide" id="slide4">
+        <div class="container">
+            <div class="heart">❤️</div>
+            <h1>Наш Язык Любви</h1>
+            <div class="quiz-container">
+                <h2>Какой твой основной язык любви?</h2>
+                
+                <div class="question">
+                    <div class="question-number">Вопрос 1:</div>
+                    <p><strong>Что ты больше всего ценишь в подарках?</strong></p>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'gifts')">Подарок, который показывает, что меня понимают</div>
+                        <div class="option" onclick="selectOption(this, 'time')">Время, проведенное вместе</div>
+                        <div class="option" onclick="selectOption(this, 'touch')">Физическая близость</div>
+                        <div class="option" onclick="selectOption(this, 'words')">Слова признания и похвалы</div>
+                        <div class="option" onclick="selectOption(this, 'service')">Помощь в делах</div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-number">Вопрос 2:</div>
+                    <p><strong>Что тебе больше всего нравится в выходные?</strong></p>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'time')">Провести весь день вместе</div>
+                        <div class="option" onclick="selectOption(this, 'gifts')">Получить небольшой сюрприз</div>
+                        <div class="option" onclick="selectOption(this, 'words')">Услышать, как ты мне говоришь "люблю"</div>
+                        <div class="option" onclick="selectOption(this, 'service')">Когда мне помогают с делами</div>
+                        <div class="option" onclick="selectOption(this, 'touch')">Объятия и близость</div>
+                    </div>
+                </div>
+
+                <div class="question">
+                    <div class="question-number">Вопрос 3:</div>
+                    <p><strong>Что тебя больше всего трогает?</strong></p>
+                    <div class="options">
+                        <div class="option" onclick="selectOption(this, 'words')">Искренние слова любви</div>
+                        <div class="option" onclick="selectOption(this, 'touch')">Нежные прикосновения</div>
+                        <div class="option" onclick="selectOption(this, 'gifts')">Подарок, сделанный с душой</div>
+                        <div class="option" onclick="selectOption(this, 'service')">Когда за меня что-то делают</div>
+                        <div class="option" onclick="selectOption(this, 'time')">Когда со мной проводят много времени</div>
+                    </div>
+                </div>
+
+                <button class="next-btn" onclick="calculateResult()" style="margin-top: 20px;">Узнать результат</button>
+            </div>
+            
+            <div class="result" id="quizResult">
+                <h2>Наш Результат</h2>
+                <div class="result-content" id="resultContent"></div>
+                <button class="next-btn" onclick="showSlide(5)" style="margin-top: 20px;">Продолжить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Пятый слайд (Обратный отсчет) -->
+    <div class="slide" id="slide5">
+        <div class="container">
+            <div class="heart">🎉</div>
+            <h1>До Следующей Годовщины</h1>
+            <div class="countdown">
+                <div class="countdown-title">Осталось времени:</div>
+                <div class="timer-numbers">
+                    <div class="time-unit">
+                        <div class="time-value" id="countdown-days">000</div>
+                        <div class="time-label">Дней</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="countdown-hours">00</div>
+                        <div class="time-label">Часов</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="countdown-minutes">00</div>
+                        <div class="time-label">Минут</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="countdown-seconds">00</div>
+                        <div class="time-label">Секунд</div>
+                    </div>
+                </div>
+            </div>
+            <p>Скоро мы отметим еще одну годовщину нашей любви! 💖</p>
+            <button class="next-btn" onclick="showSlide(6)">Продолжить</button>
+        </div>
+    </div>
+
+    <!-- Шестой слайд -->
+    <div class="slide" id="slide6">
+        <div class="container">
+            <div class="heart">💕</div>
+            <h1>Наши лучшие моменты</h1>
+            <div class="photo-gallery">
+                <div class="photo-item">
+                    <img src="https://picsum.photos/120/120?random=1" alt="">
+                </div>
+                <div class="photo-item">
+                    <img src="https://picsum.photos/120/120?random=2" alt="">
+                </div>
+                <div class="photo-item">
+                    <img src="https://picsum.photos/120/120?random=3" alt="">
+                </div>
+            </div>
+            <p>Каждое фото — это воспоминание, которое я бережно храню в сердце.</p>
+            <p>Спасибо за эти прекрасные 2 года 💖</p>
+            <button class="next-btn" onclick="showSlide(7)">Еще</button>
+        </div>
+    </div>
+
+    <!-- Седьмой слайд (Сообщение) -->
+    <div class="slide" id="slide7">
+        <div class="container">
+            <div class="heart">💌</div>
+            <h1>Отправь мне сообщение</h1>
+            <div class="message-form">
+                <h2>Твои слова для меня</h2>
+                <div class="telegram-info">
+                    <strong>ℹ️ Сообщение будет отправлено прямо в мой Telegram!</strong>
+                    <p>Напиши что-нибудь романтичное или просто от сердца...</p>
+                </div>
+                <div class="form-group">
+                    <label for="message">Что ты хочешь мне сказать?</label>
+                    <textarea id="message" placeholder="Твои самые искренние слова..."></textarea>
+                </div>
+                <div class="loading" id="sendMessageLoading">
+                    <div class="spinner"></div>
+                    <p>Отправка...</p>
+                </div>
+                <button class="send-btn" onclick="sendMessage()">Отправить в Telegram ❤️</button>
+            </div>
+            <div class="success-message" id="successMessage">
+                <h2>Сообщение отправлено! 💖</h2>
+                <p>Твои слова уже летят ко мне в Telegram!</p>
+                <p>Спасибо, что поделилась своими чувствами ❤️</p>
+                <button class="next-btn" onclick="showSlide(1)" style="margin-top: 20px;">Начать заново</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
