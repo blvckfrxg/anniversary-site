@@ -11,20 +11,10 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.urlencoded({ extended: true }));
 
-// Создаем бота (если токен есть)
-let bot;
-if (TOKEN !== '8345921861:AAGdxBroNKkBXDMjkJO7YgO1vUyBgDCb8N8' && CHAT_ID !== '1937410406') {
-    try {
-        bot = new TelegramBot(TOKEN, { polling: true });
-        console.log('Бот Telegram успешно инициализирован! 🤖');
-    } catch (error) {
-        console.error('Ошибка инициализации бота Telegram:', error);
-    }
-} else {
-    console.log('Токен или Chat ID не установлены. Бот Telegram не активен.');
-}
+// Статические файлы - указываем правильный путь
+app.use(express.static(path.join(__dirname, '../public')));
 
 // API endpoint для отправки сообщений
 app.post('/api/send-message', async (req, res) => {
@@ -36,18 +26,22 @@ app.post('/api/send-message', async (req, res) => {
         }
         
         // Проверяем, инициализирован ли бот
-        if (!bot) {
-            return res.status(500).json({ success: false, error: 'Бот Telegram не инициализирован' });
+        if (TOKEN !== 'YOUR_BOT_TOKEN_HERE' && CHAT_ID !== 'YOUR_CHAT_ID_HERE') {
+            try {
+                const bot = new TelegramBot(TOKEN, { polling: false });
+                const message = `💌 Новое сообщение от моей любимой:\n\n"${text}"\n\nОтправлено с сайта годовщины ❤️`;
+                await bot.sendMessage(CHAT_ID, message);
+                res.json({ success: true, message: 'Сообщение успешно отправлено!' });
+            } catch (error) {
+                console.error('Ошибка отправки сообщения:', error);
+                res.status(500).json({ success: false, error: error.message });
+            }
+        } else {
+            // Для тестирования без Telegram
+            res.json({ success: true, message: 'Сообщение получено (Telegram отключен для тестирования)' });
         }
-        
-        // Отправляем сообщение в Telegram
-        const message = `💌 Новое сообщение от моей любимой:\n\n"${text}"\n\nОтправлено с сайта годовщины ❤️`;
-        
-        await bot.sendMessage(CHAT_ID, message);
-        
-        res.json({ success: true, message: 'Сообщение успешно отправлено!' });
     } catch (error) {
-        console.error('Ошибка отправки сообщения:', error);
+        console.error('Ошибка:', error);
         res.status(500).json({ success: false, error: error.message });
     }
 });
@@ -59,13 +53,7 @@ app.get('/', (req, res) => {
 
 // Запуск сервера
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log(`Сервер запущен на порту ${PORT}`);
     console.log(`Открой в браузере: http://localhost:${PORT}`);
-    
-    // Если бот не инициализирован, показываем предупреждение
-    if (!bot) {
-        console.log('\n⚠️  ВНИМАНИЕ: Бот Telegram не активен!');
-        console.log('Убедитесь, что установлены переменные окружения TOKEN и CHAT_ID');
-    }
 });
