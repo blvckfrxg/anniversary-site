@@ -1,7 +1,7 @@
 // Дата начала отношений: 14 сентября 2023, 08:50
-const startDate = new Date('2023-09-14T08:50:00');
+const startDate = new Date('2023-09-14T00:00:00');
 // Дата следующей годовщины: 14 сентября 2025
-const nextAnniversary = new Date('2025-09-14T08:50:00');
+const nextAnniversary = new Date('2026-09-14T00:00:00');
 
 // Для теста
 let answers = {
@@ -269,3 +269,4 @@ document.body.addEventListener('touchstart', function(e) {
         // Можно добавить специфичную логику для тач-устройств
     }
 }, { passive: true });
+
